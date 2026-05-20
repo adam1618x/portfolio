@@ -4,76 +4,144 @@ import { Mail, MapPin, Phone } from "lucide-react"
 import { MetallicTitle } from "./MetallicTitle"
 import personalData from "@/src/data/personal.json"
 
+const LinkedInIcon = () => (
+  <svg className="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+  </svg>
+)
+
+const GitHubIcon = () => (
+  <svg className="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+  </svg>
+)
+
+const UpworkIcon = () => (
+  <svg className="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.543-1.14-2.543-2.546V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z" />
+  </svg>
+)
+
+const contacts = [
+  {
+    icon: <Mail className="h-6 w-6 text-white" />,
+    gradient: "from-indigo-500 to-purple-500",
+    label: "Email",
+    value: personalData.contact.email,
+    href: `mailto:${personalData.contact.email}`,
+    color: "text-indigo-400 hover:text-indigo-300",
+  },
+  {
+    icon: <Phone className="h-6 w-6 text-white" />,
+    gradient: "from-purple-500 to-violet-500",
+    label: "Phone",
+    value: personalData.contact.phone,
+    href: `tel:${personalData.contact.phone}`,
+    color: "text-purple-400 hover:text-purple-300",
+  },
+  {
+    icon: <MapPin className="h-6 w-6 text-white" />,
+    gradient: "from-violet-500 to-indigo-500",
+    label: "Location",
+    value: personalData.contact.location,
+    href: null,
+    color: "text-violet-400",
+  },
+]
+
+const socials = [
+  {
+    icon: <LinkedInIcon />,
+    gradient: "from-indigo-500 to-purple-500",
+    label: "LinkedIn",
+    value: "linkedin.com/in/adam-jemal",
+    href: personalData.contact.linkedin,
+    color: "text-indigo-400 hover:text-indigo-300",
+  },
+  {
+    icon: <GitHubIcon />,
+    gradient: "from-purple-500 to-violet-500",
+    label: "GitHub",
+    value: "github.com/adam-jemal",
+    href: personalData.contact.github,
+    color: "text-purple-400 hover:text-purple-300",
+  },
+  {
+    icon: <UpworkIcon />,
+    gradient: "from-violet-500 to-indigo-500",
+    label: "Upwork",
+    value: "upwork.com/fl/adam-jemal",
+    href: personalData.contact.upwork,
+    color: "text-violet-400 hover:text-violet-300",
+  },
+]
+
+function ContactItem({ icon, gradient, label, value, href, color }: {
+  icon: React.ReactNode
+  gradient: string
+  label: string
+  value: string
+  href: string | null
+  color: string
+}) {
+  return (
+    <div className="flex items-center space-x-4 group">
+      <div className={`w-14 h-14 bg-gradient-to-br ${gradient} rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform professional-icon flex-shrink-0`}>
+        {icon}
+      </div>
+      <div>
+        <div className="text-white font-semibold text-lg">{label}</div>
+        {href ? (
+          <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className={`${color} transition-colors`}>
+            {value}
+          </a>
+        ) : (
+          <div className={color}>{value}</div>
+        )}
+      </div>
+    </div>
+  )
+}
+
 export function Contact() {
   return (
     <section id="contact" className="pt-20 pb-8 px-4 bg-gray-800/20 relative">
-      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-radial from-indigo-500/15 via-purple-500/8 to-transparent rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-radial from-violet-500/12 via-indigo-500/6 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-radial from-indigo-500/15 via-purple-500/8 to-transparent rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-radial from-violet-500/12 via-indigo-500/6 to-transparent rounded-full blur-3xl" />
 
       <div className="max-w-6xl mx-auto relative z-10">
+        {/* Header */}
         <div className="text-center mb-16">
           <MetallicTitle className="text-4xl md:text-5xl font-bold mb-6">GET IN TOUCH</MetallicTitle>
-          <div className="w-32 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-violet-500 mx-auto professional-line"></div>
+          <div className="w-32 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-violet-500 mx-auto professional-line" />
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mt-6">
             {personalData.contact.description.split(" ").map((word, index) => {
               if (word.includes("extraordinary")) {
-                return (
-                  <span key={index} className="professional-highlight">
-                    {word}{" "}
-                  </span>
-                )
+                return <span key={index} className="professional-highlight">{word}{" "}</span>
               }
               return word + " "
             })}
           </p>
         </div>
 
-        <div className="flex flex-col items-center space-y-8 max-w-lg mx-auto">
-          <div>
-            <h3 className="text-2xl font-bold mb-6 text-white readable-title text-center">LET'S CONNECT</h3>
-            <p className="text-gray-300 mb-8 text-lg text-center">{personalData.contact.connectMessage}</p>
+        {/* Two columns — each self-contained with its own heading + items */}
+        <div className="grid md:grid-cols-2 gap-x-16 gap-y-12 max-w-4xl mx-auto">
+          {/* Left */}
+          <div className="flex flex-col gap-6">
+            <div>
+              <h3 className="text-2xl font-bold text-white readable-title">LET'S CONNECT</h3>
+              <p className="text-gray-300 text-lg mt-2 line-clamp-2">{personalData.contact.connectMessage}</p>
+            </div>
+            {contacts.map((item) => <ContactItem key={item.label} {...item} />)}
           </div>
 
-          <div className="space-y-6 w-full">
-            <div className="flex items-center space-x-4 group">
-              <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform professional-icon flex-shrink-0">
-                <Mail className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <div className="text-white font-semibold text-lg">Email</div>
-                <a
-                  href={`mailto:${personalData.contact.email}`}
-                  className="text-indigo-400 hover:text-indigo-300 transition-colors"
-                >
-                  {personalData.contact.email}
-                </a>
-              </div>
+          {/* Right */}
+          <div className="flex flex-col gap-6">
+            <div>
+              <h3 className="text-2xl font-bold text-white readable-title">FIND ME ON</h3>
+              <p className="text-gray-300 text-lg mt-2 line-clamp-2">My profiles and open source work across platforms.</p>
             </div>
-
-            <div className="flex items-center space-x-4 group">
-              <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-violet-500 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform professional-icon flex-shrink-0">
-                <Phone className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <div className="text-white font-semibold text-lg">Phone</div>
-                <a
-                  href={`tel:${personalData.contact.phone}`}
-                  className="text-purple-400 hover:text-purple-300 transition-colors"
-                >
-                  {personalData.contact.phone}
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-4 group">
-              <div className="w-14 h-14 bg-gradient-to-br from-violet-500 to-indigo-500 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform professional-icon flex-shrink-0">
-                <MapPin className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <div className="text-white font-semibold text-lg">Location</div>
-                <div className="text-violet-400">{personalData.contact.location}</div>
-              </div>
-            </div>
+            {socials.map((item) => <ContactItem key={item.label} {...item} />)}
           </div>
         </div>
       </div>

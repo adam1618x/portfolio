@@ -8,7 +8,16 @@ export function Footer() {
             <div className="max-w-6xl mx-auto text-center">
                 <p className="text-gray-400 text-lg">
                     © {currentYear}{" "}
-                    <span className="professional-highlight">Mohamed Adam Jemal</span>. Based on open source work by{" "}
+
+                    <a
+                        href="https://github.com/adam1618x/portfolio"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="professional-highlight hover:opacity-80 transition-opacity"
+                    >
+                        Mohamed Adam Jemal
+                    </a>
+                    . Based on open source work by{" "}
                     <a
                         href="https://github.com/RayenSahmim/portfolio"
                         target="_blank"

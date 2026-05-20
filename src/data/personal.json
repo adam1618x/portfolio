@@ -3,14 +3,29 @@
   "img": "/profile-photo.jpg",
   "title": "Junior FULL-STACK & IoT Systems DEVELOPER",
   "description": "A Junior full-stack and IoT Systems developer. I recently completed a Bachelor’s degree in Computer Engineering and have worked on innovative projects at the intersection of hardware and software.",
-  "highlights": ["innovative", "modern", "scalable", "computer engineering", "IoT"],
+  "highlights": [
+    "innovative",
+    "modern",
+    "scalable",
+    "computer engineering",
+    "IoT"
+  ],
   "about": {
     "intro": "I'm a motivated Junior full-stack and IoT Systems developer with a Bachelor's degree in Computer Engineering. I enjoy building innovative digital solutions that connect the physical and digital worlds — from smart devices to responsive web interfaces.I have hands-on exposure to technologies like React, MongoDB, Django REST Framework, and Next.js, which I’ve used to build modern web applications and dashboards. Through projects like EcoSort, a smart waste management system powered by AI, IoT, and cloud platforms, I’ve applied my skills in both front-end and back-end development, as well as edge computing.",
     "secondary": "Currently, I’m deepening my knowledge in DevOps and Artificial Intelligence, aiming to stay current with emerging technologies. I’m looking for opportunities where I can learn, grow, and contribute to meaningful and technically challenging projects.",
     "stats": [
-      { "number": "5+", "label": "Projects" },
-      { "number": "1+", "label": "Years Experience" },
-      { "number": "3", "label": "Languages" }
+      {
+        "number": "5+",
+        "label": "Projects"
+      },
+      {
+        "number": "1+",
+        "label": "Years Experience"
+      },
+      {
+        "number": "3",
+        "label": "Languages"
+      }
     ],
     "values": [
       {
@@ -34,6 +49,9 @@
     "email": "mohamed.adam.jemal@gmail.com",
     "phone": "(+216) 99579351",
     "location": "Ariana, Tunisia",
+    "linkedin": "https://www.linkedin.com/in/mohamed-adam-jemal",
+    "github": "https://github.com/adam1618x",
+    "upwork": "https://www.upwork.com/freelancers/~01f31a868268eb189f",
     "description": "Ready to bring your next project to life? Let's create something extraordinary together.",
     "connectMessage": "I'm always excited to discuss new opportunities, innovative ideas, and potential collaborations that push the boundaries of technology."
   },

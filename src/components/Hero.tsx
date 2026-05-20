@@ -91,6 +91,8 @@ export function Hero() {
               alt={personalData.name}
               width={200}
               height={200}
+              loading="eager"
+              priority
               className="rounded-full object-cover border-4 border-indigo-500 
                         w-[120px] h-[120px]
                         sm:w-[140px] sm:h-[140px] 

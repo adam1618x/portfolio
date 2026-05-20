@@ -204,7 +204,7 @@ export function AIAssistant() {
   }
 
   return (
-    <section id="ai-assistant" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-800/20 relative">
+    <section id="ai-assistant" className="py-20 px-4 sm:px-6 lg:px-8 relative">
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-gradient-radial from-purple-500/15 via-indigo-500/8 to-transparent rounded-full blur-3xl"></div>
 
       <div className="max-w-4xl mx-auto relative z-10">
