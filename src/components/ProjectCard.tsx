@@ -1,11 +1,11 @@
 "use client"
 
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/src/components/ui/card"
-import { Button } from "@/src/components/ui/button"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/src/components/ui/Card"
+import { Button } from "@/src/components/ui/Button"
 import { ExternalLink, Github, Star, Bot } from "lucide-react"
 import Image from "next/image"
 import * as SimpleIcons from "react-icons/si"
-import { ProjectAIDialog } from "@/src/components/project-ai-dialog"
+import { ProjectAIDialog } from "@/src/components/ProjectAiDialog"
 
 
 type Project = {
@@ -49,7 +49,7 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
       LangChain: SimpleIcons.SiLangchain,
       "Shadcn UI": SimpleIcons.SiShadcnui,
       Analytics: SimpleIcons.SiGoogleanalytics,
-      "UI/UX": SimpleIcons.SiFigma,    
+      "UI/UX": SimpleIcons.SiFigma,
     }
 
     return iconMap[techName] || SimpleIcons.SiCoder
@@ -86,14 +86,13 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
     return darkIcons.includes(techName)
   }
 
-   
+
 
   return (
     <Card
       key={`${project.title}-${project.order}-${sortBy}`}
-      className={`project-card professional-card-hover group overflow-hidden transition-all duration-300 flex flex-col h-full ${
-        project.featured ? "ring-2 ring-indigo-500/30" : ""
-      }`}
+      className={`project-card professional-card-hover group overflow-hidden transition-all duration-300 flex flex-col h-full ${project.featured ? "ring-2 ring-indigo-500/30" : ""
+        }`}
     >
       <div className="relative overflow-hidden">
         {project.featured && (
@@ -105,13 +104,13 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
           </div>
         )}
 
-       <Image
-        src={project.image || "/placeholder.svg"}
-        alt={project.title}
-        width={400}
-        height={300}
-        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-      />
+        <Image
+          src={project.image || "/placeholder.svg"}
+          alt={project.title}
+          width={400}
+          height={300}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
 
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
@@ -161,9 +160,9 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
           <div className="flex space-x-2 flex-wrap gap-2">
             {/* Handle single repository (like Next.js projects) */}
             {project.github && (
-              <Button 
-                variant="outline" 
-                size="sm" 
+              <Button
+                variant="outline"
+                size="sm"
                 className="professional-button-small group/btn cursor-pointer"
                 onClick={() => window.open(project.github, '_blank')}
               >
@@ -171,14 +170,14 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
                 Code
               </Button>
             )}
-            
+
             {/* Handle multiple repositories (like MERN projects) */}
             {project.repositories && (
               <>
                 {project.repositories.frontend && (
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
+                  <Button
+                    variant="outline"
+                    size="sm"
                     className="professional-button-small group/btn"
                     onClick={() => window.open(project?.repositories?.frontend, '_blank')}
                   >
@@ -187,9 +186,9 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
                   </Button>
                 )}
                 {project.repositories.backend && (
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
+                  <Button
+                    variant="outline"
+                    size="sm"
                     className="professional-button-small group/btn"
                     onClick={() => window.open(project?.repositories?.backend, '_blank')}
                   >
@@ -199,10 +198,10 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
                 )}
               </>
             )}
-            
-            <Button 
-              variant="outline" 
-              size="sm" 
+
+            <Button
+              variant="outline"
+              size="sm"
               className="professional-button-small group/btn cursor-pointer"
               onClick={() => window.open(project.live, '_blank')}
               disabled={project.live === '#'}
@@ -214,9 +213,9 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
 
           {/* Right side - Ask AI Button */}
           <ProjectAIDialog project={project}>
-            <Button 
-              variant="outline" 
-              size="sm" 
+            <Button
+              variant="outline"
+              size="sm"
               className="professional-button-small group/btn bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border-indigo-400/50 hover:border-indigo-400 hover:from-indigo-500/30 hover:to-purple-500/30 shadow-lg shadow-indigo-500/20 cursor-pointer"
             >
               <Bot className="h-4 w-4 group-hover/btn:scale-110 transition-transform text-indigo-400" />

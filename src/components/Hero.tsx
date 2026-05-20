@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { ChevronDown, Github, Linkedin, Mail, Download } from "lucide-react"
-import { Button } from "@/src/components/ui/button"
+import { Button } from "@/src/components/ui/Button"
 import navigationData from "@/src/data/navigation.json"
 import { toast } from "sonner"
 import Image from "next/image"

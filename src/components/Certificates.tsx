@@ -1,8 +1,8 @@
 "use client"
 
-import { Card, CardContent } from "@/src/components/ui/card"
-import { MetallicTitle } from "./metallic-title"
-import { Badge } from "@/src/components/ui/badge"
+import { Card, CardContent } from "@/src/components/ui/Card"
+import { MetallicTitle } from "./MetallicTitle"
+import { Badge } from "@/src/components/ui/Badge"
 import { Calendar, Award, ExternalLink, Shield } from "lucide-react"
 import { useState } from "react"
 import certificatesData from "@/src/data/certificates.json"
@@ -42,34 +42,33 @@ export function Certificates() {
               </div>
 
               {/* Glow effect on hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 opacity-0 transition-opacity duration-500 ${
-                hoveredCert === cert.id ? 'opacity-100' : ''
-              }`}></div>
+              <div className={`absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 opacity-0 transition-opacity duration-500 ${hoveredCert === cert.id ? 'opacity-100' : ''
+                }`}></div>
 
               <CardContent className="p-6 sm:p-8 relative z-10 flex flex-col h-full">
                 <div className="flex-1">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
-                        
-                          <div className="flex items-center gap-4 mb-1">
-                            <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-xl shadow-lg flex-shrink-0">
-                              <Award className="w-6 h-6 h-auto w-auto text-white" />
-                            </div>
-                            <div>
-                              <h3 className="text-xl sm:text-x font-bold text-white mb-1">
-                                {cert.title}
-                              </h3>
-                              <p className="text-indigo-400 font-medium">{cert.issuer}</p>
-                            </div>
+
+                        <div className="flex items-center gap-4 mb-1">
+                          <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-xl shadow-lg flex-shrink-0">
+                            <Award className="w-6 h-6 h-auto w-auto text-white" />
                           </div>
-                        
+                          <div>
+                            <h3 className="text-xl sm:text-x font-bold text-white mb-1">
+                              {cert.title}
+                            </h3>
+                            <p className="text-indigo-400 font-medium">{cert.issuer}</p>
+                          </div>
+                        </div>
+
                         {cert.verificationUrl && (
-                        <a
-                          href={cert.verificationUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="
+                          <a
+                            href={cert.verificationUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="
                             absolute right-3 top-3 
                             opacity-100 transition-all duration-300 
                             p-2 rounded-full 
@@ -78,11 +77,11 @@ export function Certificates() {
                             shadow-md hover:shadow-lg 
                             hover:scale-110
                           "
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                        </a>
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                          </a>
 
-                      )}
+                        )}
                       </div>
                     </div>
                   </div>

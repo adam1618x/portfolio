@@ -1,23 +1,21 @@
 import { motion } from "framer-motion";
-
 import { styles } from "../styles";
 import { staggerContainer } from "../utils/motion";
 
-const StarWrapper = (Component, idName) =>
-  function HOC() {
+const StarWrapper = <P extends object>(Component: React.ComponentType<P>, idName: string) =>
+  function HOC(props: P) {
     return (
       <motion.section
-        variants={staggerContainer()}
-        initial='hidden'
-        whileInView='show'
+        variants={staggerContainer(0.1, 0.2)}
+        initial="hidden"
+        whileInView="show"
         viewport={{ once: true, amount: 0.25 }}
         className={`${styles.padding} max-w-7xl mx-auto relative z-0`}
       >
-        <span className='hash-span' id={idName}>
+        <span className="hash-span" id={idName}>
           &nbsp;
         </span>
-
-        <Component />
+        <Component {...props} />
       </motion.section>
     );
   };

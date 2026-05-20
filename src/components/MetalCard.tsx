@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
-import { Card } from "@/src/components/ui/card"
+import { Card } from "@/src/components/ui/Card"
 
 interface MetalCardProps {
   children: React.ReactNode

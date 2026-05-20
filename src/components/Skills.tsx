@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@/src/components/ui/card"
-import { MetallicTitle } from "./metallic-title"
+import { Card, CardContent } from "@/src/components/ui/Card"
+import { MetallicTitle } from "./MetallicTitle"
 import skillsData from "@/src/data/skills.json"
 import * as SimpleIcons from "react-icons/si"
 

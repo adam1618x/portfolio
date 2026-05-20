@@ -1,6 +1,6 @@
-import { Card, CardContent } from "@/src/components/ui/card"
+import { Card, CardContent } from "@/src/components/ui/Card"
 import { Code, Palette, Rocket } from "lucide-react"
-import { MetallicTitle } from "./metallic-title"
+import { MetallicTitle } from "./MetallicTitle"
 import personalData from "@/src/data/personal.json"
 
 export function About() {
@@ -50,9 +50,8 @@ export function About() {
               {personalData.about.stats.map((stat, index) => (
                 <div
                   key={index}
-                  className={`text-center p-3 sm:p-4 rounded-lg bg-gray-800/50 border ${
-                    index === 0 ? "border-indigo-500/30" : index === 1 ? "border-purple-500/30" : "border-violet-500/30"
-                  } professional-card`}
+                  className={`text-center p-3 sm:p-4 rounded-lg bg-gray-800/50 border ${index === 0 ? "border-indigo-500/30" : index === 1 ? "border-purple-500/30" : "border-violet-500/30"
+                    } professional-card`}
                 >
                   <div className="text-2xl sm:text-3xl lg:text-4xl font-bold professional-number mb-1 sm:mb-2">{stat.number}</div>
                   <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider">{stat.label}</div>

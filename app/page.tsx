@@ -1,18 +1,19 @@
 'use client';
 
-import { Hero } from "@/src/components/hero"
-import { Experience } from "@/src/components/experience"
-import { About } from "@/src/components/about"
-import { Skills } from "@/src/components/skills"
-import { Projects } from "@/src/components/projects"
-import { Certificates } from "@/src/components/certificates"
-import { AIAssistant } from "@/src/components/ai-assistant"
-import { Contact } from "@/src/components/contact"
-import { Navigation } from "@/src/components/navigation"
-import { BackgroundEffects } from "@/src/components/background-effects"
-import { ScrollToTop } from "@/src/components/scroll-to-top"
-import { ShootingStars } from "@/src/components/shooting-starts";
-import { Education } from "@/src/components/education";
+import { Hero } from "@/src/components/Hero"
+import { Experience } from "@/src/components/Experience"
+import { About } from "@/src/components/About"
+import { Skills } from "@/src/components/Skills"
+import { Projects } from "@/src/components/Projects"
+import { Certificates } from "@/src/components/Certificates"
+import { AIAssistant } from "@/src/components/AiAssistant"
+import { Contact } from "@/src/components/Contact"
+import { Navigation } from "@/src/components/Navigation"
+import { BackgroundEffects } from "@/src/components/BackgroundEffects"
+import { ScrollToTop } from "@/src/components/ScrollToTop"
+import { ShootingStars } from "@/src/components/ShootingStarts";
+import { Education } from "@/src/components/Education";
+import { Footer } from "@/src/components/Footer";
 
 export default function Portfolio() {
   return (
@@ -29,8 +30,9 @@ export default function Portfolio() {
         <Education />
         <AIAssistant />
         <Contact />
-        <ShootingStars/>
+        <Footer />
       </main>
+      <ShootingStars />
       <ScrollToTop />
     </div>
   )

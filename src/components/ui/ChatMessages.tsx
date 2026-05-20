@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
-import { MessageComponent } from '@/src/components/ui/message';
-import { TypingIndicator } from '@/src/components/ui/typing-indicator';
+import { MessageComponent } from '@/src/components/ui/Message';
+import { TypingIndicator } from '@/src/components/ui/TypingIndicator';
 
 interface Message {
   id: number;
@@ -17,7 +17,7 @@ interface ChatMessagesProps {
 export const ChatMessages = forwardRef<HTMLDivElement, ChatMessagesProps>(
   ({ messages, isTyping }, ref) => {
     return (
-      <div 
+      <div
         ref={ref}
         className="h-64 sm:h-72 lg:h-80 overflow-y-auto p-3 sm:p-4 bg-gray-900/50 rounded-lg border border-indigo-500/20 scrollbar-thin scrollbar-thumb-indigo-500 scrollbar-track-gray-800"
       >

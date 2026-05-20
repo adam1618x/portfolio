@@ -3,14 +3,14 @@
 import type React from "react"
 
 import { useState, useEffect, useRef } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/src/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/src/components/ui/Card"
 import { Bot, Sparkles } from "lucide-react"
-import { MetallicTitle } from "./metallic-title"
-import { ChatMessages } from "@/src/components/ui/chat-messages"
-import { ChatInput } from "@/src/components/ui/chat-input"
-import { QuickQuestions } from "@/src/components/ui/quick-questions"
-import aiData from "@/src/data/ai-responses.json"
-import { sendAIResponse } from "@/app/actions/Ai.action"
+import { MetallicTitle } from "./MetallicTitle"
+import { ChatMessages } from "@/src/components/ui/ChatMessages"
+import { ChatInput } from "@/src/components/ui/ChatInput"
+import { QuickQuestions } from "@/src/components/ui/QuickQuestions"
+import aiData from "@/src/data/aiResponses.json"
+import { sendAIResponse } from "@/app/actions/ai.action"
 import type { Content } from "@google/generative-ai"
 
 interface Message {

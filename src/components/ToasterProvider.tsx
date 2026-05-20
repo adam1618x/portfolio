@@ -1,6 +1,6 @@
 'use client';
 
-import { Toaster } from "@/src/components/ui/sonner";
+import { Toaster } from "@/src/components/ui/Sonner";
 
 export default function ToasterProvider() {
   return <Toaster />;

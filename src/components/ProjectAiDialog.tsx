@@ -1,12 +1,12 @@
 "use client"
 
 import React, { useState, useEffect, useRef } from "react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/src/components/ui/dialog"
-import { Button } from "@/src/components/ui/button"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/src/components/ui/Dialog"
+import { Button } from "@/src/components/ui/Button"
 import { Bot, Sparkles } from "lucide-react"
-import { ChatMessages } from "@/src/components/ui/chat-messages"
-import { ChatInput } from "@/src/components/ui/chat-input"
-import { explainProject } from "@/app/actions/Ai.action"
+import { ChatMessages } from "@/src/components/ui/ChatMessages"
+import { ChatInput } from "@/src/components/ui/ChatInput"
+import { explainProject } from "@/app/actions/ai.action"
 import type { Content } from "@google/generative-ai"
 import { cn } from "@/src/lib/utils"
 
@@ -138,14 +138,14 @@ export function ProjectAIDialog({ project, children }: ProjectAIDialogProps) {
         fullResponse += chunk
 
         // Update the AI message with streaming text
-        setMessages((prev) => 
-          prev.map((msg) => 
-            msg.id === aiMessage.id 
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === aiMessage.id
               ? { ...msg, text: fullResponse }
               : msg
           )
         )
-        
+
         // Small delay for better streaming experience
         await new Promise(resolve => setTimeout(resolve, 10))
       }
@@ -160,7 +160,7 @@ export function ProjectAIDialog({ project, children }: ProjectAIDialogProps) {
 
     } catch (error) {
       console.error("Error getting AI response:", error)
-      
+
       // Fallback to mock response
       const aiResponse: Message = {
         id: messages.length + 2,
@@ -168,7 +168,7 @@ export function ProjectAIDialog({ project, children }: ProjectAIDialogProps) {
         isUser: false,
         timestamp: new Date(),
       }
-      
+
       setMessages((prev) => [...prev, aiResponse])
       setIsTyping(false)
     }
@@ -246,14 +246,14 @@ export function ProjectAIDialog({ project, children }: ProjectAIDialogProps) {
         fullResponse += chunk
 
         // Update the AI message with streaming text
-        setMessages((prev) => 
-          prev.map((msg) => 
-            msg.id === aiMessage.id 
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === aiMessage.id
               ? { ...msg, text: fullResponse }
               : msg
           )
         )
-        
+
         // Small delay for better streaming experience
         await new Promise(resolve => setTimeout(resolve, 10))
       }
@@ -268,7 +268,7 @@ export function ProjectAIDialog({ project, children }: ProjectAIDialogProps) {
 
     } catch (error) {
       console.error("Error getting AI response:", error)
-      
+
       // Fallback to mock response
       const aiResponse: Message = {
         id: messages.length + 2,
@@ -276,7 +276,7 @@ export function ProjectAIDialog({ project, children }: ProjectAIDialogProps) {
         isUser: false,
         timestamp: new Date(),
       }
-      
+
       setMessages((prev) => [...prev, aiResponse])
       setIsTyping(false)
     }
@@ -288,53 +288,53 @@ export function ProjectAIDialog({ project, children }: ProjectAIDialogProps) {
         {children}
       </DialogTrigger>
       <DialogContent className="sm:max-w-md md:max-w-3xl w-full h-[80vh] max-h-[90vh] bg-gray-900 border-gray-800 overflow-hidden">
-  <DialogHeader>
-    <DialogTitle className="text-white text-xl font-bold flex items-center gap-2 break-words">
-      <Bot className="h-6 w-6 text-indigo-400 flex-shrink-0" />
-      <span className="break-words">Ask AI about {project.title}</span>
-      <Sparkles className="h-5 w-5 text-purple-400 flex-shrink-0" />
-    </DialogTitle>
-    </DialogHeader>
+        <DialogHeader>
+          <DialogTitle className="text-white text-xl font-bold flex items-center gap-2 break-words">
+            <Bot className="h-6 w-6 text-indigo-400 flex-shrink-0" />
+            <span className="break-words">Ask AI about {project.title}</span>
+            <Sparkles className="h-5 w-5 text-purple-400 flex-shrink-0" />
+          </DialogTitle>
+        </DialogHeader>
 
-    <div className="flex flex-col flex-1 h-full space-y-4 overflow-hidden">
-      {/* Chat Messages */}
-      <div className="flex-1 min-h-0 overflow-y-auto">
-        <ChatMessages 
-          ref={chatContainerRef}
-          messages={messages}
-          isTyping={isTyping}
-        />
-      </div>
+        <div className="flex flex-col flex-1 h-full space-y-4 overflow-hidden">
+          {/* Chat Messages */}
+          <div className="flex-1 min-h-0 overflow-y-auto">
+            <ChatMessages
+              ref={chatContainerRef}
+              messages={messages}
+              isTyping={isTyping}
+            />
+          </div>
 
-      {/* Quick Questions */}
-      {messages.length === 1 && (
-        <div className="space-y-2 flex-shrink-0 max-w-full overflow-hidden">
-          <p className="text-xs sm:text-sm text-gray-400 break-words">Quick questions:</p>
-          <div className="flex flex-wrap gap-1.5 sm:gap-2 max-w-full overflow-hidden">
-            {quickQuestions.map((question, index) => (
-              <QuickQuestionButton 
-                key={index} 
-                question={question} 
-                index={index}
-              />
-            ))}
+          {/* Quick Questions */}
+          {messages.length === 1 && (
+            <div className="space-y-2 flex-shrink-0 max-w-full overflow-hidden">
+              <p className="text-xs sm:text-sm text-gray-400 break-words">Quick questions:</p>
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 max-w-full overflow-hidden">
+                {quickQuestions.map((question, index) => (
+                  <QuickQuestionButton
+                    key={index}
+                    question={question}
+                    index={index}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Input */}
+          <div className="flex-shrink-0 overflow-hidden">
+            <ChatInput
+              value={inputValue}
+              onChange={setInputValue}
+              onSend={handleSendMessage}
+              onKeyPress={handleKeyPress}
+              placeholder={`Ask me anything about ${project.title}...`}
+              disabled={isTyping}
+            />
           </div>
         </div>
-      )}
-
-      {/* Input */}
-      <div className="flex-shrink-0 overflow-hidden">
-        <ChatInput
-          value={inputValue}
-          onChange={setInputValue}
-          onSend={handleSendMessage}
-          onKeyPress={handleKeyPress}
-          placeholder={`Ask me anything about ${project.title}...`}
-          disabled={isTyping}
-        />
-      </div>
-    </div>
-  </DialogContent>
+      </DialogContent>
     </Dialog>
   )
 }

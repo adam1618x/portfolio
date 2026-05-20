@@ -3,7 +3,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { MetallicTitle } from "./metallic-title";
+import { MetallicTitle } from "./MetallicTitle";
 import type { StaticImageData } from "next/image";
 
 import "react-vertical-timeline-component/style.min.css";

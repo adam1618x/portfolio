@@ -1,11 +1,11 @@
 "use client"
 
 import { useState, useEffect, useRef, useMemo } from "react"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/src/components/ui/card"
-import { Button } from "@/src/components/ui/button"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/src/components/ui/Card"
+import { Button } from "@/src/components/ui/Button"
 import { ExternalLink, Github, Star, ChevronDown, ChevronUp, ArrowUpDown, Cpu, Globe, Filter } from "lucide-react"
 import Image from "next/image"
-import { MetallicTitle } from "./metallic-title"
+import { MetallicTitle } from "./MetallicTitle"
 import projectsData from "@/src/data/projects.json"
 import { gsap } from "gsap"
 import * as SimpleIcons from "react-icons/si"
@@ -99,20 +99,20 @@ export function Projects() {
   // Auto-categorize projects based on technologies if category is not set
   const categorizeProject = (project: Project): "iot" | "web" => {
     if (project.category) return project.category
-    
+
     const iotKeywords = ["Arduino", "Raspberry Pi", "ESP32", "ESP8266", "IoT", "Sensor", "Hardware", "Embedded", "MQTT", "BLE", "WiFi", "Bluetooth"]
     const webKeywords = ["Next.js", "React", "Node.js", "Express", "MongoDB", "Supabase", "Tailwind CSS", "Socket.IO", "WebRTC"]
-    
-    const hasIoTTech = project.technologies.some(tech => 
+
+    const hasIoTTech = project.technologies.some(tech =>
       iotKeywords.some(keyword => tech.toLowerCase().includes(keyword.toLowerCase()))
-    ) || project.title.toLowerCase().includes("iot") || 
-        project.description.toLowerCase().includes("hardware") ||
-        project.description.toLowerCase().includes("sensor")
-    
-    const hasWebTech = project.technologies.some(tech => 
+    ) || project.title.toLowerCase().includes("iot") ||
+      project.description.toLowerCase().includes("hardware") ||
+      project.description.toLowerCase().includes("sensor")
+
+    const hasWebTech = project.technologies.some(tech =>
       webKeywords.includes(tech)
     )
-    
+
     // If it has IoT keywords, categorize as IoT, otherwise default to web
     return hasIoTTech ? "iot" : "web"
   }
@@ -152,18 +152,18 @@ export function Projects() {
   const hasMoreProjects = visibleCount < totalProjects
 
   // Get category counts
- const categoryCounts = useMemo(() => {
-  const allProjects = [...projectsData.projects].map(project => ({
-    ...project,
-    category: (project.category ? project.category : categorizeProject(project as Project)).toLowerCase() as "iot" | "web"
-  }))
-  
-  return {
-    all: allProjects.length,
-    iot: allProjects.filter(p => p.category === "iot").length,
-    web: allProjects.filter(p => p.category === "web").length
-  }
-}, [])
+  const categoryCounts = useMemo(() => {
+    const allProjects = [...projectsData.projects].map(project => ({
+      ...project,
+      category: (project.category ? project.category : categorizeProject(project as Project)).toLowerCase() as "iot" | "web"
+    }))
+
+    return {
+      all: allProjects.length,
+      iot: allProjects.filter(p => p.category === "iot").length,
+      web: allProjects.filter(p => p.category === "web").length
+    }
+  }, [])
 
 
   const handleFilterChange = (type: FilterType, value: SortOption | CategoryFilter) => {
@@ -189,7 +189,7 @@ export function Projects() {
           } else {
             setCategoryFilter(value as CategoryFilter)
           }
-          
+
           setVisibleCount(4) // Reset to show first 4 projects
 
           // Wait for DOM update, then fade in new projects
@@ -369,11 +369,10 @@ export function Projects() {
                     key={option.key}
                     onClick={() => handleFilterChange("category", option.key)}
                     disabled={isAnimating}
-                    className={`px-3 py-1 rounded-full text-xs transition-all duration-300 flex items-center space-x-1 cursor-pointer ${
-                      categoryFilter === option.key
-                        ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white"
-                        : "text-gray-400 hover:text-indigo-400 hover:bg-indigo-500/10"
-                    }`}
+                    className={`px-3 py-1 rounded-full text-xs transition-all duration-300 flex items-center space-x-1 cursor-pointer ${categoryFilter === option.key
+                      ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white"
+                      : "text-gray-400 hover:text-indigo-400 hover:bg-indigo-500/10"
+                      }`}
                   >
                     {IconComponent && <IconComponent className="h-3 w-3" />}
                     <span>{option.label}</span>
@@ -398,11 +397,10 @@ export function Projects() {
                   key={option.key}
                   onClick={() => handleFilterChange("sort", option.key)}
                   disabled={isAnimating}
-                  className={`px-3 py-1 rounded-full text-xs transition-all duration-300 cursor-pointer ${
-                    sortBy === option.key
-                      ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white"
-                      : "text-gray-400 hover:text-indigo-400 hover:bg-indigo-500/10"
-                  }`}
+                  className={`px-3 py-1 rounded-full text-xs transition-all duration-300 cursor-pointer ${sortBy === option.key
+                    ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white"
+                    : "text-gray-400 hover:text-indigo-400 hover:bg-indigo-500/10"
+                    }`}
                 >
                   {option.label}
                 </button>
@@ -492,11 +490,10 @@ export function Projects() {
                 {Array.from({ length: Math.ceil(totalProjects / 4) }).map((_, index) => (
                   <div
                     key={index}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index < Math.ceil(visibleCount / 4)
-                        ? "bg-gradient-to-r from-indigo-500 to-purple-500"
-                        : "bg-gray-600"
-                    }`}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${index < Math.ceil(visibleCount / 4)
+                      ? "bg-gradient-to-r from-indigo-500 to-purple-500"
+                      : "bg-gray-600"
+                      }`}
                   />
                 ))}
               </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Bot, User } from 'lucide-react';
-import { MarkdownRenderer } from '@/src/components/ui/markdown-renderer';
+import { MarkdownRenderer } from '@/src/components/ui/MarkdownRenderer';
 
 interface Message {
   id: number;
@@ -17,11 +17,10 @@ export function MessageComponent({ message }: MessageComponentProps) {
   return (
     <div className={`flex ${message.isUser ? "justify-end" : "justify-start"}`}>
       <div
-        className={`w-fit max-w-[95%] sm:max-w-[85%] lg:max-w-[75%] px-3 sm:px-4 py-2 sm:py-3 rounded-lg ${
-          message.isUser
+        className={`w-fit max-w-[95%] sm:max-w-[85%] lg:max-w-[75%] px-3 sm:px-4 py-2 sm:py-3 rounded-lg ${message.isUser
             ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-br-sm"
             : "bg-gray-700 text-gray-200 rounded-bl-sm"
-        }`}
+          }`}
       >
         <div className="flex items-start space-x-1 sm:space-x-2">
           {!message.isUser && (
