@@ -49,7 +49,7 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
       LangChain: SimpleIcons.SiLangchain,
       "Shadcn UI": SimpleIcons.SiShadcnui,
       Analytics: SimpleIcons.SiGoogleanalytics,
-      "UI/UX": SimpleIcons.SiAdobe,
+      "UI/UX": SimpleIcons.SiFigma,    
     }
 
     return iconMap[techName] || SimpleIcons.SiCoder

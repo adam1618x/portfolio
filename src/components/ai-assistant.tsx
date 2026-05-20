@@ -35,21 +35,16 @@ export function AIAssistant() {
   const chatContainerRef = useRef<HTMLDivElement>(null)
 
   const scrollToBottom = () => {
-    // Scroll within the chat container, not the entire page
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
     }
   }
 
-  // Only scroll when new messages are added (not on initial mount)
   useEffect(() => {
-    // Only scroll if there's more than just the initial message
     if (messages.length > 1) {
       scrollToBottom()
     }
-  }, [messages]) // Trigger when messages array changes
-
- 
+  }, [messages])
 
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return
@@ -67,17 +62,14 @@ export function AIAssistant() {
     setIsTyping(true)
 
     try {
-      // Add user message to conversation history
       const userContent: Content = {
         role: "user",
         parts: [{ text: currentInput }]
       }
 
-      // Get AI response stream
       const stream = await sendAIResponse(currentInput, conversationHistory)
       const reader = stream.getReader()
 
-      // Create AI message placeholder
       const aiMessage: Message = {
         id: messages.length + 2,
         text: "",
@@ -90,29 +82,24 @@ export function AIAssistant() {
 
       let fullResponse = ""
 
-      // Read stream chunks
       while (true) {
         const { done, value } = await reader.read()
         if (done) break
 
-        // Decode the Uint8Array to text
         const chunk = new TextDecoder().decode(value)
         fullResponse += chunk
 
-        // Update the AI message with streaming text
-        setMessages((prev) => 
-          prev.map((msg) => 
-            msg.id === aiMessage.id 
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === aiMessage.id
               ? { ...msg, text: fullResponse }
               : msg
           )
         )
-        
-        // Small delay for better streaming experience
+
         await new Promise(resolve => setTimeout(resolve, 10))
       }
 
-      // Update conversation history
       const aiContent: Content = {
         role: "model",
         parts: [{ text: fullResponse }]
@@ -122,15 +109,14 @@ export function AIAssistant() {
 
     } catch (error) {
       console.error("Error getting AI response:", error)
-      
-      // Fallback to mock response
+
       const aiResponse: Message = {
         id: messages.length + 2,
         text: "I apologize, but I'm having trouble connecting right now. Please try again in a moment, or feel free to contact Adam directly at mohamed.adam.jemal@gmail.com.",
         isUser: false,
         timestamp: new Date(),
       }
-      
+
       setMessages((prev) => [...prev, aiResponse])
       setIsTyping(false)
     }
@@ -138,13 +124,13 @@ export function AIAssistant() {
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      e.preventDefault() // Prevent any default behavior
+      e.preventDefault()
       handleSendMessage()
     }
   }
 
   const handleQuickQuestionClick = async (question: string) => {
-    if (isTyping) return // Don't allow new messages while typing
+    if (isTyping) return
 
     const userMessage: Message = {
       id: messages.length + 1,
@@ -157,17 +143,14 @@ export function AIAssistant() {
     setIsTyping(true)
 
     try {
-      // Add user message to conversation history
       const userContent: Content = {
         role: "user",
         parts: [{ text: question }]
       }
 
-      // Get AI response stream
       const stream = await sendAIResponse(question, conversationHistory)
       const reader = stream.getReader()
 
-      // Create AI message placeholder
       const aiMessage: Message = {
         id: messages.length + 2,
         text: "",
@@ -180,29 +163,24 @@ export function AIAssistant() {
 
       let fullResponse = ""
 
-      // Read stream chunks
       while (true) {
         const { done, value } = await reader.read()
         if (done) break
 
-        // Decode the Uint8Array to text
         const chunk = new TextDecoder().decode(value)
         fullResponse += chunk
 
-        // Update the AI message with streaming text
-        setMessages((prev) => 
-          prev.map((msg) => 
-            msg.id === aiMessage.id 
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === aiMessage.id
               ? { ...msg, text: fullResponse }
               : msg
           )
         )
-        
-        // Small delay for better streaming experience
+
         await new Promise(resolve => setTimeout(resolve, 10))
       }
 
-      // Update conversation history
       const aiContent: Content = {
         role: "model",
         parts: [{ text: fullResponse }]
@@ -212,15 +190,14 @@ export function AIAssistant() {
 
     } catch (error) {
       console.error("Error getting AI response:", error)
-      
-      // Fallback to mock response
+
       const aiResponse: Message = {
         id: messages.length + 2,
         text: "I apologize, but I'm having trouble connecting right now. Please try again in a moment, or feel free to contact Adam directly at mohamed.adam.jemal@gmail.com.",
         isUser: false,
         timestamp: new Date(),
       }
-      
+
       setMessages((prev) => [...prev, aiResponse])
       setIsTyping(false)
     }
@@ -228,7 +205,6 @@ export function AIAssistant() {
 
   return (
     <section id="ai-assistant" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-800/20 relative">
-      {/* Section Spotlight */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-gradient-radial from-purple-500/15 via-indigo-500/8 to-transparent rounded-full blur-3xl"></div>
 
       <div className="max-w-4xl mx-auto relative z-10">
@@ -251,29 +227,37 @@ export function AIAssistant() {
               Chat with AI Assistant
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4 sm:space-y-6">
-            {/* Chat Messages */}
-            <ChatMessages 
+
+          <CardContent className="flex flex-col gap-4 sm:gap-6">
+            {/* Chat Messages — scrollable, responsive height */}
+            <div
               ref={chatContainerRef}
-              messages={messages}
-              isTyping={isTyping}
-            />
+              className="overflow-y-auto scroll-smooth rounded-lg"
+              style={{
+                minHeight: "120px",
+                maxHeight: "55dvh",
+                scrollbarWidth: "thin",
+                scrollbarColor: "rgba(139,92,246,0.3) transparent",
+              }}
+            >
+              <ChatMessages messages={messages} isTyping={isTyping} />
+            </div>
 
-            {/* Quick Questions */}
-            <QuickQuestions 
-              questions={aiData.quickQuestions}
-              onQuestionClick={handleQuickQuestionClick}
-            />
-
-            {/* Input */}
-            <ChatInput
-              value={inputValue}
-              onChange={setInputValue}
-              onSend={handleSendMessage}
-              onKeyPress={handleKeyPress}
-              placeholder={aiData.placeholder}
-              disabled={isTyping}
-            />
+            {/* Quick Questions + Input — always visible at bottom */}
+            <div className="flex flex-col gap-3 shrink-0">
+              <QuickQuestions
+                questions={aiData.quickQuestions}
+                onQuestionClick={handleQuickQuestionClick}
+              />
+              <ChatInput
+                value={inputValue}
+                onChange={setInputValue}
+                onSend={handleSendMessage}
+                onKeyPress={handleKeyPress}
+                placeholder={aiData.placeholder}
+                disabled={isTyping}
+              />
+            </div>
           </CardContent>
         </Card>
       </div>

@@ -16,7 +16,7 @@ export function QuickQuestions({ questions, onQuestionClick }: QuickQuestionsPro
             key={index}
             variant="outline"
             size="sm"
-            className="professional-button-small text-xs sm:text-sm h-7 sm:h-8 px-2 sm:px-3"
+            className="professional-button-small text-xs sm:text-sm h-7 sm:h-8 px-2 sm:px-3 cursor-pointer"
             onClick={() => onQuestionClick(question)}
           >
             {question}

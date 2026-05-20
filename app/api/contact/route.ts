@@ -1,42 +1,41 @@
-import nodemailer from "nodemailer";
+import { auth } from "@/src/lib/auth"          // ← replaces getServerSession
+import { NextRequest, NextResponse } from "next/server"
+import nodemailer from "nodemailer"
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
-    const { name, email, message } = body;
+    const session = await auth()               // ← replaces getServerSession(authOptions)
 
-    if (!name || !email || !message) {
-      return new Response(
-        JSON.stringify({ success: false, error: "All fields are required" }),
-        { status: 400 }
-      );
+    if (!session?.user?.email) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    // Create transporter
+    const { name, message, email } = await req.json()
+
+    if (email !== session.user.email) {
+      return NextResponse.json({ error: "Email mismatch" }, { status: 403 })
+    }
+
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
       port: Number(process.env.EMAIL_PORT),
-      secure: false, // use true if port 465
+      secure: false,
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
-    });
+    })
 
-    // Send email
     await transporter.sendMail({
       from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
       subject: `New message from ${name}`,
-      text: `Email: ${email}\nMessage: ${message}`,
-    });
+      text: `From: ${email}\n\nMessage:\n${message}`,
+    })
 
-    return new Response(JSON.stringify({ success: true }), { status: 200 });
+    return NextResponse.json({ success: true }, { status: 200 })
   } catch (error) {
-    console.error(error);
-    return new Response(
-      JSON.stringify({ success: false, error: "Failed to send email" }),
-      { status: 500 }
-    );
+    console.error(error)
+    return NextResponse.json({ success: false, error: "Failed to send email" }, { status: 500 })
   }
 }
