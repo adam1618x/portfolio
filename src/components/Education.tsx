@@ -9,7 +9,6 @@ import type { StaticImageData } from "next/image";
 import "react-vertical-timeline-component/style.min.css";
 
 import educationData from "@/src/data/education.json";
-import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
 
 type VerticalTimelineProps = {
