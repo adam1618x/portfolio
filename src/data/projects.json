@@ -6,7 +6,15 @@
       "title": "EcoSort – Intelligent Waste Management System",
       "description": "AI-powered waste sorting robot integrating computer vision, cloud connectivity, and robotic automation. Built using Raspberry Pi, YOLO, Django, and React for autonomous classification and remote monitoring.",
       "image": "/projects/ecosort.jpg",
-      "technologies": ["Python", "YOLO", "Raspberry Pi", "Django", "React", "AWS IoT", "MySQL"],
+      "technologies": [
+        "Python",
+        "YOLO",
+        "Raspberry Pi",
+        "Django",
+        "React",
+        "AWS IoT",
+        "MySQL"
+      ],
       "github": "https://github.com/Mohamed-Adam-Jemal",
       "live": "#",
       "featured": true,
@@ -17,7 +25,14 @@
       "title": "Smart Access System for Buildings",
       "description": "RFID-enabled smart lock system using ESP32 and ESP-NOW for secure wireless access. Web dashboard developed with Django and React to manage users and log access events.",
       "image": "/projects/smart-access-system.jpg",
-      "technologies": ["ESP32", "ESP-NOW", "Django", "React", "Tailwind CSS", "MySQL"],
+      "technologies": [
+        "ESP32",
+        "ESP-NOW",
+        "Django",
+        "React",
+        "Tailwind CSS",
+        "MySQL"
+      ],
       "github": "https://github.com/Mohamed-Adam-Jemal",
       "live": "#",
       "featured": false,
@@ -28,7 +43,12 @@
       "title": "Smart Irrigation System",
       "description": "Automated irrigation system with remote control, OLED display, and overwatering prevention. Controlled via Arduino IoT Cloud and monitored through a mobile dashboard.",
       "image": "/projects/smart-irrigation-pr.png",
-      "technologies": ["ESP32", "C++", "Arduino IoT Cloud", "REST API"],
+      "technologies": [
+        "ESP32",
+        "C++",
+        "Arduino IoT Cloud",
+        "REST API"
+      ],
       "github": "https://github.com/Mohamed-Adam-Jemal",
       "live": "#",
       "featured": false,
@@ -39,12 +59,18 @@
       "title": "Fork & Friends",
       "description": "A modern web-based platform for restaurants to manage menus, orders, reservations, and customer engagement. Integrated with an AI-powered chatbot for personalized recommendations.",
       "image": "/projects/fork-friends.png",
-      "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript", "Supabase", "Gemini API"],
+      "technologies": [
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "TypeScript",
+        "Supabase",
+        "Gemini API"
+      ],
       "github": "https://github.com/Mohamed-Adam-Jemal/Fork-Friends",
       "live": "https://fork-friends-restaurant.vercel.app",
-      "featured": true,
+      "featured": false,
       "category": "Web"
     }
-
   ]
 }

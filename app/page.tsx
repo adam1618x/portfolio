@@ -2,7 +2,7 @@
 
 import { Hero } from "@/src/components/Hero"
 import { Experience } from "@/src/components/Experience"
-import { About } from "@/src/components/About"
+import { About } from "@/src/components/AboutMe"
 import { Skills } from "@/src/components/Skills"
 import { Projects } from "@/src/components/Projects"
 import { Certificates } from "@/src/components/Certificates"

@@ -1,16 +1,16 @@
 
 export const experiences = [
-  {
-    title: "IoT Developer",
-    company_name: "RoboCare",
-    icon: "/experiences/robocare.png",
-    iconBg: "#383E56",
-    date: "Jul 2025 - Present",
-    points: [
-      "Working as an IoT Developer in a hybrid role based in Sfax, Tunisia.",
-      "Developing IoT solutions with a focus on smart systems and connected devices.",
-    ],
-  },
+  // {
+  //   title: "IoT Developer",
+  //   company_name: "RoboCare",
+  //   icon: "/experiences/robocare.png",
+  //   iconBg: "#383E56",
+  //   date: "Jul 2025 - Present",
+  //   points: [
+  //     "Working as an IoT Developer in a hybrid role based in Sfax, Tunisia.",
+  //     "Developing IoT solutions with a focus on smart systems and connected devices.",
+  //   ],
+  // },
   {
     title: "Research Assistant",
     company_name: "Bristol Cyber Security Group, University of Bristol",
