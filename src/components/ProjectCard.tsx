@@ -2,13 +2,15 @@
 
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/src/components/ui/Card"
 import { Button } from "@/src/components/ui/Button"
-import { ExternalLink, Github, Star, Bot } from "lucide-react"
+import { ExternalLink, Github, Star, Bot, Images } from "lucide-react"
 import Image from "next/image"
 import * as SimpleIcons from "react-icons/si"
 import { ProjectAIDialog } from "@/src/components/ProjectAiDialog"
+import { ProjectGalleryDialog } from "./ProjectGalleryDialog"
 
 
 type Project = {
+  gallery: any
   order: number
   title: string
   description: string
@@ -154,31 +156,44 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
         </div>
       </CardContent>
 
-      <CardFooter className="mt-auto">
-        <div className="flex justify-between items-center pt-4 w-full">
-          {/* Left side - Action buttons */}
-          <div className="flex space-x-2 flex-wrap gap-2">
-            {/* Handle single repository (like Next.js projects) */}
+      <CardFooter className="mt-auto pt-4 border-t border-white/10">
+        <div className="flex flex-col w-full gap-3">
+
+          {/* Ask AI Button - Top */}
+          <ProjectAIDialog project={project}>
+            <Button
+              variant="outline"
+              size="sm"
+              className="professional-button-small group/btn w-full bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border-indigo-400/50 hover:border-indigo-400 hover:from-indigo-500/30 hover:to-purple-500/30 shadow-lg shadow-indigo-500/20 cursor-pointer"
+            >
+              <Bot className="h-4 w-4 group-hover/btn:scale-110 transition-transform text-indigo-400" />
+              <span className="ml-2 text-indigo-400 text-xs">Ask AI about this project</span>
+            </Button>
+          </ProjectAIDialog>
+
+          {/* Divider */}
+          <div className="w-full h-px bg-white/5" />
+
+          {/* Code Buttons Row */}
+          <div className="flex flex-wrap gap-2">
             {project.github && (
               <Button
                 variant="outline"
                 size="sm"
-                className="professional-button-small group/btn cursor-pointer"
+                className="professional-button-small group/btn cursor-pointer flex-1 min-w-[80px]"
                 onClick={() => window.open(project.github, '_blank')}
               >
                 <Github className="h-4 w-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
                 Code
               </Button>
             )}
-
-            {/* Handle multiple repositories (like MERN projects) */}
             {project.repositories && (
               <>
                 {project.repositories.frontend && (
                   <Button
                     variant="outline"
                     size="sm"
-                    className="professional-button-small group/btn"
+                    className="professional-button-small group/btn cursor-pointer flex-1 min-w-[80px]"
                     onClick={() => window.open(project?.repositories?.frontend, '_blank')}
                   >
                     <Github className="h-4 w-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
@@ -189,7 +204,7 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="professional-button-small group/btn"
+                    className="professional-button-small group/btn cursor-pointer flex-1 min-w-[80px]"
                     onClick={() => window.open(project?.repositories?.backend, '_blank')}
                   >
                     <Github className="h-4 w-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
@@ -198,11 +213,21 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
                 )}
               </>
             )}
-
+            {/* <ProjectGalleryDialog project={project}>
+              <Button
+                variant="outline"
+                size="sm"
+                className="professional-button-small group/btn cursor-pointer flex-1 min-w-[80px]"
+                disabled={!project.gallery && !project.image}
+              >
+                <Images className="h-4 w-4 mr-2 group-hover/btn:scale-110 transition-transform" />
+                Gallery
+              </Button>
+            </ProjectGalleryDialog> */}
             <Button
               variant="outline"
               size="sm"
-              className="professional-button-small group/btn cursor-pointer"
+              className="professional-button-small group/btn cursor-pointer flex-1 min-w-[80px]"
               onClick={() => window.open(project.live, '_blank')}
               disabled={project.live === '#'}
             >
@@ -211,16 +236,6 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
             </Button>
           </div>
 
-          {/* Right side - Ask AI Button */}
-          <ProjectAIDialog project={project}>
-            <Button
-              variant="outline"
-              size="sm"
-              className="professional-button-small group/btn bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border-indigo-400/50 hover:border-indigo-400 hover:from-indigo-500/30 hover:to-purple-500/30 shadow-lg shadow-indigo-500/20 cursor-pointer"
-            >
-              <Bot className="h-4 w-4 group-hover/btn:scale-110 transition-transform text-indigo-400" />
-            </Button>
-          </ProjectAIDialog>
         </div>
       </CardFooter>
     </Card>

@@ -11,8 +11,9 @@
     "IoT"
   ],
   "about": {
-    "intro": "I'm a motivated Junior full-stack and IoT Systems developer with a Bachelor's degree in Computer Engineering. I enjoy building innovative digital solutions that connect the physical and digital worlds — from smart devices to responsive web interfaces.I have hands-on exposure to technologies like React, MongoDB, Django REST Framework, and Next.js, which I’ve used to build modern web applications and dashboards. Through projects like EcoSort, a smart waste management system powered by AI, IoT, and cloud platforms, I’ve applied my skills in both front-end and back-end development, as well as edge computing.",
-    "secondary": "Currently, I’m deepening my knowledge in DevOps and Artificial Intelligence, aiming to stay current with emerging technologies. I’m looking for opportunities where I can learn, grow, and contribute to meaningful and technically challenging projects.",
+    "intro": "I'm a Software & IoT Developer with hands-on experience building applications across web, desktop, and connected devices. I have practical experience with technologies like React, Next.js, Django REST Framework, and MongoDB, applied across real-world projects in web development and IoT systems. Through projects like WasteBot, an AI-powered waste management system integrating computer vision, connected devices, and cloud platforms, I've delivered solutions spanning software applications, connected devices, and cloud environments.",
+    "secondary": "Certified in front-end and back-end development from Meta, with practical experience delivering projects spanning software applications, connected devices, and cloud environments including IoT messaging protocols and cloud platforms.",
+    "quote": " A system is a frozen moment of understanding — and the world never stops moving.",
     "stats": [
       {
         "number": "5+",

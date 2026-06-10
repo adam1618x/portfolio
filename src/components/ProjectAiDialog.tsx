@@ -53,7 +53,7 @@ export function ProjectAIDialog({ project, children }: ProjectAIDialogProps) {
         key={index}
         variant="outline"
         size="sm"
-        className="professional-button-small text-xs sm:text-sm h-auto min-h-[28px] sm:min-h-[32px] px-2 sm:px-3 max-w-[180px] sm:max-w-[220px] text-left overflow-hidden"
+        className="professional-button-small text-xs sm:text-sm h-auto min-h-[28px] sm:min-h-[32px] px-2 sm:px-3 max-w-[180px] sm:max-w-[220px] text-left overflow-hidden cursor-pointer"
         onClick={() => handleQuickQuestionClick(question)}
         title={question} // Show full text on hover
       >
@@ -308,8 +308,8 @@ export function ProjectAIDialog({ project, children }: ProjectAIDialogProps) {
 
           {/* Quick Questions */}
           {messages.length === 1 && (
-            <div className="space-y-2 flex-shrink-0 max-w-full overflow-hidden">
-              <p className="text-xs sm:text-sm text-gray-400 break-words">Quick questions:</p>
+            <div className="space-y-2 flex-shrink-0 max-w-full overflow-hidden ">
+              <p className="text-xs sm:text-sm text-gray-400 break-words ">Quick questions:</p>
               <div className="flex flex-wrap gap-1.5 sm:gap-2 max-w-full overflow-hidden">
                 {quickQuestions.map((question, index) => (
                   <QuickQuestionButton

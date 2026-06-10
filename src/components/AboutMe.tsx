@@ -32,7 +32,7 @@ export function About() {
           <div className="space-y-4 sm:space-y-6">
             <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed">
               {personalData.about.intro.split(" ").map((word, index) => {
-                const keywords = ["Junior", "full-stack", "developer", "IoT", "Computer Engineering", "innovative", "solutions", "cutting-edge", "technologies"]
+                const keywords = ["Software", "full-stack", "developer", "IoT", "Computer Engineering", "innovative", "solutions", "cutting-edge", "technologies"]
                 const containsKeyword = keywords.some(keyword => word.includes(keyword))
                 if (containsKeyword) {
                   return (
@@ -44,7 +44,12 @@ export function About() {
                 return word + " "
               })}
             </p>
-            <p className="text-sm sm:text-base lg:text-lg text-gray-400 leading-relaxed">{personalData.about.secondary}</p>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed">
+              {personalData.about.secondary}
+            </p>
+            <p className="text-sm sm:text-base lg:text-lg text-gray-400 leading-relaxed italic mt-4">
+              "{personalData.about.quote}"
+            </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-10 lg:mt-12">
               {personalData.about.stats.map((stat, index) => (
@@ -60,7 +65,7 @@ export function About() {
             </div>
           </div>
 
-          <div className="space-y-4 sm:space-y-6 mt-8 lg:mt-0">
+          {/* <div className="space-y-4 sm:space-y-6 mt-8 lg:mt-0">
             {personalData.about.values.map((value, index) => {
               const IconComponent = getIcon(value.icon)
               const gradientClass =
@@ -86,7 +91,7 @@ export function About() {
                 </Card>
               )
             })}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

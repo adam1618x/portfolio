@@ -18,7 +18,13 @@
       "github": "https://github.com/Mohamed-Adam-Jemal",
       "live": "#",
       "featured": true,
-      "category": "IoT"
+      "category": "IoT",
+      "gallery": [
+        "/projects/wastebot/cover.png",
+        "/projects/WasteBot-back.png",
+        "/projects/WasteBot-front.png",
+        "/projects/wastebot/screenshot2.png"
+      ]
     },
     {
       "order": 2,
@@ -68,7 +74,7 @@
         "Gemini API"
       ],
       "github": "https://github.com/Mohamed-Adam-Jemal/Fork-Friends",
-      "live": "https://fork-friends-restaurant.vercel.app",
+      "live": "#",
       "featured": false,
       "category": "Web"
     }

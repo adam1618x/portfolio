@@ -234,8 +234,8 @@ export function AIAssistant() {
               ref={chatContainerRef}
               className="overflow-y-auto scroll-smooth rounded-lg"
               style={{
-                minHeight: "120px",
-                maxHeight: "55dvh",
+                minHeight: "160px",
+                maxHeight: "min(65dvh, 600px)",
                 scrollbarWidth: "thin",
                 scrollbarColor: "rgba(139,92,246,0.3) transparent",
               }}
