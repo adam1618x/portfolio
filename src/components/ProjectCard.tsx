@@ -10,7 +10,7 @@ import { ProjectGalleryDialog } from "./ProjectGalleryDialog"
 
 
 type Project = {
-  gallery: any
+  gallery?: any
   order: number
   title: string
   description: string
